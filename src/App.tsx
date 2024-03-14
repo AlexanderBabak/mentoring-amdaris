@@ -1,5 +1,7 @@
+import { Box } from "@mui/material";
+
 const App = () => {
-  return <div>Hello Babak</div>;
+  return <Box>Hello Babak</Box>;
 };
 
 export default App;
