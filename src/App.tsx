@@ -1,7 +1,14 @@
-import { Box } from "@mui/material";
+import { Suspense } from "react";
+import { RouterProvider } from "react-router-dom";
+import router from "./features/common/libs/router";
+import Loading from "./features/common/ui/atoms";
 
 const App = () => {
-  return <Box>Hello Babak</Box>;
+  return (
+    <Suspense>
+      <RouterProvider fallbackElement={<Loading />} router={router} />
+    </Suspense>
+  );
 };
 
 export default App;
