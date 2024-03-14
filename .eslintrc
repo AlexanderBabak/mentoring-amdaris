@@ -1,0 +1,40 @@
+{
+  "root": true,
+  "extends": [
+  "eslint:recommended",
+  "react-app",
+  "react-app/jest",
+  "plugin:jsx-a11y/recommended",
+  "plugin:prettier/recommended"
+],
+  "plugins": [
+  "jsx-a11y"
+],
+  "rules": {
+  "no-console": [
+    "error",
+    {
+      "allow": [
+        "warn",
+        "error"
+      ]
+    }
+  ],
+    "prettier/prettier": [
+    "error",
+    {
+      "plugins": [
+        "@trivago/prettier-plugin-sort-imports"
+      ],
+      "importOrder": [
+        "^react$",
+        "^react",
+        "<THIRD_PARTY_MODULES>",
+        "^features/(.*)$",
+        "^[./]"
+      ],
+      "importOrderCaseInsensitive": true
+    }
+  ]
+}
+}

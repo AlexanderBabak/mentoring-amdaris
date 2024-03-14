@@ -1,0 +1,30 @@
+{
+  "parser": "typescript",
+  "arrowParens": "always",
+  "printWidth": 120,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "singleQuote": false,
+  "semi": true,
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "semi": false,
+        "parser": "json"
+      }
+    }
+  ],
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ],
+  "importOrder": [
+    "^react$",
+    "^react",
+    "<THIRD_PARTY_MODULES>",
+    "^features/(.*)$",
+    "^[./]"
+  ],
+  "importOrderCaseInsensitive": true
+}
