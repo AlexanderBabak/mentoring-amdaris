@@ -37,16 +37,18 @@ exports[`Snackbar should render as expected 1`] = `
   border-radius: 4px;
   box-shadow: none;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.43;
   letter-spacing: 0.01071em;
-  background-color: #2e7d32;
+  background-color: transparent;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   padding: 6px 16px;
+  font-weight: 500;
+  background-color: #2e7d32;
   color: #fff;
   color: #fff;
   -webkit-align-items: center;
@@ -234,7 +236,7 @@ exports[`Snackbar should render as expected 1`] = `
       role="presentation"
     >
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-filledSuccess MuiAlert-filled emotion-1"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-filledSuccess MuiAlert-filled emotion-1"
         data-testid="success"
         direction="up"
         role="alert"

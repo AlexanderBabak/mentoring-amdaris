@@ -1,3 +1,1 @@
-import { lazy } from "react";
-
-export default lazy(() => import("./LoginPage"));
+export { default } from "./LoginPage";

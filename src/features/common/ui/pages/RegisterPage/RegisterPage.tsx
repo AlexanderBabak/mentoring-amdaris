@@ -1,23 +1,23 @@
 import { Box, Typography } from "@mui/material";
 import AuthNavigation from "../../molecules/AuthNavigation";
 import AuthWrapper from "../../organisms/AuthWrapper";
-import LoginForm from "../../organisms/LoginForm";
+import RegisterForm from "../../organisms/RegisterForm";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <AuthWrapper>
       <Box marginBottom={4}>
         <Typography variant="h1" fontSize="2rem">
-          Sign In
+          Sign Up
         </Typography>
         <Typography variant="h2" sx={{ color: (theme) => theme.palette.grey[400] }}>
-          Thanks to come back on Amdaris Babak
+          Please register to use Amdaris Babak
         </Typography>
       </Box>
 
-      <LoginForm />
-      <AuthNavigation title="Don’t you have an account?" linkText="Sign Up" linkTo="/register" />
+      <RegisterForm />
+      <AuthNavigation title="Do you have an account?" linkText="Sign In" linkTo="/login" />
     </AuthWrapper>
   );
 };
-export default LoginPage;
+export default RegisterPage;
