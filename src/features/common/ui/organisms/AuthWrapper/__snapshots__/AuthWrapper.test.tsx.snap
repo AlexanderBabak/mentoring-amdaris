@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainWrapper reflect background color by bgcolor props 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #1976d2;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  place-items: center;
+}
+
+.emotion-1 {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 48px;
+}
+
+<body>
+  <div>
+    <div
+      class="MuiStack-root emotion-0"
+    >
+      <div
+        class="MuiBox-root emotion-1"
+      >
+        <div
+          data-testid="mock-Component"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`MainWrapper should work as expected 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #1976d2;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  place-items: center;
+}
+
+.emotion-1 {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 48px;
+}
+
+<body>
+  <div>
+    <div
+      class="MuiStack-root emotion-0"
+    >
+      <div
+        class="MuiBox-root emotion-1"
+      >
+        <div
+          data-testid="mock-Component"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+`;
