@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
 import { Box, Button, CircularProgress, Stack, Typography } from "@mui/material";
 import useSnackbar from "../../../hooks/useSnackbar";
 import { LoginParams } from "../../../types/auth";
@@ -8,7 +7,6 @@ import InputStyled from "../../atoms/InputStyled";
 
 const LoginForm = () => {
   const { openSnackbar, closeSnackbar } = useSnackbar();
-  const navigate = useNavigate();
 
   const {
     register,
