@@ -1,7 +1,7 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 const jestConfig = {
   clearMocks: true,
-  collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}", "!src/__mocks__/**"],
+  collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}", "!src/**/*.d.ts", "!src/__mocks__/**"],
   coverageDirectory: "coverage",
   coverageProvider: "v8",
   moduleNameMapper: {
