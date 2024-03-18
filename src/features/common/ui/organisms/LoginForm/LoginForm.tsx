@@ -1,60 +1,17 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
-import { Box, Button, CircularProgress, Stack, Typography } from "@mui/material";
-import useSnackbar from "../../../hooks/useSnackbar";
-import { LOGIN_USER } from "../../../libs/apollo/user";
-import { AuthContext } from "../../../libs/context/authContext";
+import { Box, Button, CircularProgress, Stack } from "@mui/material";
+import useLoginUser from "../../../hooks/useLoginUser";
 import { LoginParams } from "../../../types/auth";
 import InputStyled from "../../atoms/InputStyled";
 
 const LoginForm = () => {
+  const [loginUser, { loading }] = useLoginUser();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<LoginParams>();
-  const context = useContext(AuthContext);
-  const navigate = useNavigate();
-  const { openSnackbar, closeSnackbar } = useSnackbar();
-
-  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    update(_, { data: { loginUser: userData } }) {
-      openSnackbar({
-        alertSeverity: "success",
-        alertTitle: "Successfully Sign In",
-        alertContent: "Now you can start working",
-        alertAction: false,
-      });
-
-      context.login(userData);
-      navigate("/");
-    },
-    onError({ graphQLErrors }) {
-      if (graphQLErrors.length > 0) {
-        openSnackbar({
-          alertSeverity: "error",
-          alertTitle: "Unable to Sign In",
-          alertContent: (
-            <Stack rowGap={0.25}>
-              <Typography>{graphQLErrors[0].message}</Typography>
-              <Typography>Please try again</Typography>
-            </Stack>
-          ),
-          alertAction: (
-            <Button sx={{ color: (theme) => theme.palette.common.white }} onClick={closeSnackbar}>
-              Okay
-            </Button>
-          ),
-          ClickAwayListenerProps: {
-            onClickAway: (event) => event.preventDefault(),
-          },
-          autoHideDuration: null,
-        });
-      }
-    },
-  });
 
   const handleLoginSubmit = (values: LoginParams) => {
     loginUser({ variables: { loginInput: values } });

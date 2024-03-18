@@ -1,64 +1,22 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
-import { Box, Button, CircularProgress, Stack, Typography } from "@mui/material";
-import useSnackbar from "../../../hooks/useSnackbar";
-import { REGISTER_USER } from "../../../libs/apollo/user";
-import { AuthContext } from "../../../libs/context/authContext";
+import { Box, Button, CircularProgress, Stack } from "@mui/material";
+import useRegisterUser from "../../../hooks/useRegisterUser";
 import { RegisterParams } from "../../../types/auth";
 import InputStyled from "../../atoms/InputStyled";
 
 const RegisterForm = () => {
+  const [registerUser, { loading }] = useRegisterUser();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     watch,
   } = useForm<RegisterParams>();
-  const { openSnackbar, closeSnackbar } = useSnackbar();
-  const context = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const password = useRef({});
   password.current = watch("password", "");
-
-  const [registerUser, { loading }] = useMutation(REGISTER_USER, {
-    update(_, { data: { registerUser: userData } }) {
-      openSnackbar({
-        alertSeverity: "success",
-        alertTitle: "Successfully Sign Up",
-        alertContent: "Now you can start working",
-        alertAction: false,
-      });
-
-      context.login(userData);
-      navigate("/");
-    },
-    onError({ graphQLErrors }) {
-      if (graphQLErrors.length > 0) {
-        openSnackbar({
-          alertSeverity: "error",
-          alertTitle: "Unable to register",
-          alertContent: (
-            <Stack rowGap={0.25}>
-              <Typography>{graphQLErrors[0].message}</Typography>
-              <Typography>Please try again</Typography>
-            </Stack>
-          ),
-          alertAction: (
-            <Button sx={{ color: (theme) => theme.palette.common.white }} onClick={closeSnackbar}>
-              Okay
-            </Button>
-          ),
-          ClickAwayListenerProps: {
-            onClickAway: (event) => event.preventDefault(),
-          },
-          autoHideDuration: null,
-        });
-      }
-    },
-  });
 
   const handleLoginSubmit = (values: RegisterParams) => {
     registerUser({ variables: { registerInput: values } });
