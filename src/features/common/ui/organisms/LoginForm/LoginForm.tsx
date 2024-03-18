@@ -1,61 +1,67 @@
-import { useEffect } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
 import { Box, Button, CircularProgress, Stack, Typography } from "@mui/material";
 import useSnackbar from "../../../hooks/useSnackbar";
+import { LOGIN_USER } from "../../../libs/apollo/user";
+import { AuthContext } from "../../../libs/context/authContext";
 import { LoginParams } from "../../../types/auth";
 import InputStyled from "../../atoms/InputStyled";
 
 const LoginForm = () => {
-  const { openSnackbar, closeSnackbar } = useSnackbar();
-
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<LoginParams>();
+  const context = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { openSnackbar, closeSnackbar } = useSnackbar();
 
-  const handleLoginSubmit = () => {};
-
-  const isLoading = false; // TODO: fix
-  const isSuccess = false; // TODO: fix
-  const isError = false; // TODO: fix
-
-  useEffect(() => {
-    if (isError) {
-      openSnackbar({
-        alertSeverity: "error",
-        alertTitle: "Unable to Log In",
-        alertContent: (
-          <Stack rowGap={0.25}>
-            <Typography>Authorization error. Please try again.</Typography>
-          </Stack>
-        ),
-        alertAction: (
-          <Button sx={{ color: (theme) => theme.palette.common.white }} onClick={closeSnackbar}>
-            Okay
-          </Button>
-        ),
-        ClickAwayListenerProps: {
-          onClickAway: (event) => event.preventDefault(),
-        },
-        autoHideDuration: null,
-      });
-    }
-
-    if (isSuccess) {
+  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+    update(_, { data: { loginUser: userData } }) {
       openSnackbar({
         alertSeverity: "success",
-        alertTitle: "Successfully Log In",
-        alertContent: "Now you can continue working",
+        alertTitle: "Successfully Sign In",
+        alertContent: "Now you can start working",
         alertAction: false,
       });
-    }
 
-    return () => closeSnackbar();
-  }, [closeSnackbar, openSnackbar, isError, isSuccess]);
+      context.login(userData);
+      navigate("/");
+    },
+    onError({ graphQLErrors }) {
+      if (graphQLErrors.length > 0) {
+        openSnackbar({
+          alertSeverity: "error",
+          alertTitle: "Unable to Sign In",
+          alertContent: (
+            <Stack rowGap={0.25}>
+              <Typography>{graphQLErrors[0].message}</Typography>
+              <Typography>Please try again</Typography>
+            </Stack>
+          ),
+          alertAction: (
+            <Button sx={{ color: (theme) => theme.palette.common.white }} onClick={closeSnackbar}>
+              Okay
+            </Button>
+          ),
+          ClickAwayListenerProps: {
+            onClickAway: (event) => event.preventDefault(),
+          },
+          autoHideDuration: null,
+        });
+      }
+    },
+  });
+
+  const handleLoginSubmit = (values: LoginParams) => {
+    loginUser({ variables: { loginInput: values } });
+  };
 
   return (
-    <Box component="form" onSubmit={handleSubmit(handleLoginSubmit)} marginBottom={4}>
+    <Box component="form" onSubmit={handleSubmit(handleLoginSubmit)} marginBottom={4} maxWidth={400}>
       <InputStyled
         label="Email"
         error={!!errors?.email}
@@ -90,8 +96,8 @@ const LoginForm = () => {
       />
 
       <Stack>
-        <Button type="submit" variant="contained" disabled={isLoading} sx={{ padding: 1.5 }} data-testid="login-button">
-          {isLoading ? <CircularProgress color="inherit" size={20} /> : "Login"}
+        <Button type="submit" variant="contained" disabled={loading} sx={{ padding: 1.5 }} data-testid="login-button">
+          {loading ? <CircularProgress color="inherit" size={20} /> : "Login"}
         </Button>
       </Stack>
     </Box>

@@ -5,7 +5,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import "@fontsource/source-sans-pro";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { SnackbarProvider } from "../../../hooks/useSnackbar";
-import client from "../../../libs/apolloClient";
+import client from "../../../libs/apollo/apolloClient";
 import { AuthProvider } from "../../../libs/context/authContext";
 import { useTheme } from "../../../libs/theme";
 import Loading from "../../atoms/Loading/Loading";
