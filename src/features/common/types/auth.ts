@@ -1,17 +1,16 @@
 export interface UserResponse {
+  id: string;
   email: string;
-  lastName: string;
-  name: string;
+  username: string;
   password: string;
-  workspaceName: string;
+  role: "user" | "admin";
+  token: string;
 }
 
 export interface LoginParams extends Pick<UserResponse, "email" | "password"> {}
 
-export interface RegisterParams extends Pick<UserResponse, "email" | "workspaceName"> {}
-
-export interface RegisterCompleteParams extends Pick<UserResponse, "name" | "password" | "lastName"> {
-  repeatPassword: string;
+export interface RegisterParams extends Omit<UserResponse, "role" | "token" | "id"> {
+  confirmPassword: string;
 }
 
 export type LoginSubmitProps = ({ email, password }: { email: string; password: string }) => void;

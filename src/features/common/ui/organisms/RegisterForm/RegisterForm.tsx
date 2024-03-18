@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Box, Button, CircularProgress, Stack, Typography } from "@mui/material";
 import useSnackbar from "../../../hooks/useSnackbar";
-import { RegisterCompleteParams } from "../../../types/auth";
+import { RegisterParams } from "../../../types/auth";
 import InputStyled from "../../atoms/InputStyled";
 
 const RegisterForm = () => {
@@ -13,7 +13,7 @@ const RegisterForm = () => {
     formState: { errors },
     handleSubmit,
     watch,
-  } = useForm<RegisterCompleteParams>();
+  } = useForm<RegisterParams>();
 
   const password = useRef({});
   password.current = watch("password", "");
@@ -60,36 +60,20 @@ const RegisterForm = () => {
 
   return (
     <Box component="form" onSubmit={handleSubmit(handleLoginSubmit)} marginBottom={4}>
-      <Box display="flex" gap={3}>
-        <InputStyled
-          label="Name"
-          error={!!errors?.name}
-          helperText={errors?.name ? errors?.name.message : " "}
-          validation={{
-            ...register("name", {
-              required: "Name is required",
-              minLength: {
-                value: 2,
-                message: "Minimum 2 characters",
-              },
-            }),
-          }}
-        />
-        <InputStyled
-          label="Lastname"
-          error={!!errors?.lastName}
-          helperText={errors?.lastName ? errors?.lastName.message : " "}
-          validation={{
-            ...register("lastName", {
-              required: "Surname is required",
-              minLength: {
-                value: 2,
-                message: "Minimum 2 characters",
-              },
-            }),
-          }}
-        />
-      </Box>
+      <InputStyled
+        label="Name"
+        error={!!errors?.username}
+        helperText={errors?.username ? errors?.username.message : " "}
+        validation={{
+          ...register("username", {
+            required: "Name is required",
+            minLength: {
+              value: 2,
+              message: "Minimum 2 characters",
+            },
+          }),
+        }}
+      />
 
       <InputStyled
         label="Password"
@@ -108,12 +92,12 @@ const RegisterForm = () => {
       />
 
       <InputStyled
-        label="Repeat Password"
+        label="Confirm Password"
         type="password"
-        error={!!errors?.repeatPassword}
-        helperText={errors?.repeatPassword ? errors?.repeatPassword.message : " "}
+        error={!!errors?.confirmPassword}
+        helperText={errors?.confirmPassword ? errors?.confirmPassword.message : " "}
         validation={{
-          ...register("repeatPassword", {
+          ...register("confirmPassword", {
             required: "Password is required",
             minLength: {
               value: 6,
