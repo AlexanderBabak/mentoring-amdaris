@@ -1,14 +1,13 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Stack, Typography } from "@mui/material";
 import { REGISTER_USER } from "../../libs/apollo/user";
-import { AuthContext } from "../../libs/context/authContext";
+import useGetUser from "../useGetUser/useGetUser";
 import useSnackbar from "../useSnackbar";
 
 const useRegisterUser = () => {
   const { openSnackbar, closeSnackbar } = useSnackbar();
-  const { login } = useContext(AuthContext);
+  const { login } = useGetUser();
   const navigate = useNavigate();
 
   return useMutation(REGISTER_USER, {

@@ -1,5 +1,15 @@
+import { Container } from "@mui/material";
+import useGetUser from "../../../hooks/useGetUser";
+
 const HomePage = () => {
-  return <div>HOME</div>;
+  const { user } = useGetUser();
+  return (
+    <Container>
+      <div>{user?.username}</div>
+      <div>{user?.email}</div>
+      <div>{user?.role}</div>
+    </Container>
+  );
 };
 
 export default HomePage;

@@ -3,10 +3,10 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Outlet } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import "@fontsource/source-sans-pro";
-import { Box, CssBaseline, Stack, ThemeProvider } from "@mui/material";
+import { CssBaseline, Stack, ThemeProvider } from "@mui/material";
+import { UserProvider } from "../../../hooks/useGetUser";
 import { SnackbarProvider } from "../../../hooks/useSnackbar";
 import client from "../../../libs/apollo/apolloClient";
-import { AuthProvider } from "../../../libs/context/authContext";
 import { useTheme } from "../../../libs/theme";
 import Loading from "../../atoms/Loading/Loading";
 import NavBar from "../../organisms/Navbar";
@@ -17,7 +17,7 @@ const Root = () => {
 
   return (
     <ApolloProvider client={client}>
-      <AuthProvider>
+      <UserProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <ErrorBoundary FallbackComponent={ErrorFallbackPage}>
@@ -31,7 +31,7 @@ const Root = () => {
             </SnackbarProvider>
           </ErrorBoundary>
         </ThemeProvider>
-      </AuthProvider>
+      </UserProvider>
     </ApolloProvider>
   );
 };

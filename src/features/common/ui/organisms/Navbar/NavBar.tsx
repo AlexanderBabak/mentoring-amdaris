@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material";
-import { AuthContext } from "../../../libs/context/authContext";
+import useGetUser from "../../../hooks/useGetUser/useGetUser";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout } = useGetUser();
 
   const handleLogout = () => {
     // TODO: dialog here

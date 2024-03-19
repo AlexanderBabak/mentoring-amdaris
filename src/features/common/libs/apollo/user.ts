@@ -5,7 +5,6 @@ export const REGISTER_USER = gql`
     registerUser(registerInput: $registerInput) {
       email
       id
-      password
       role
       token
       username
@@ -18,7 +17,6 @@ export const LOGIN_USER = gql`
     loginUser(loginInput: $loginInput) {
       email
       id
-      password
       role
       token
       username
@@ -31,7 +29,6 @@ export const GET_USER_BY_ID = gql`
     getUserById(ID: $id) {
       email
       id
-      password
       role
       token
       username
@@ -44,7 +41,6 @@ export const GET_USER_BY_EMAIL = gql`
     getUserByEmail(email: $email) {
       email
       id
-      password
       role
       token
       username
