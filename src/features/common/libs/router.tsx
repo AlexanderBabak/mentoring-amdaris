@@ -3,6 +3,7 @@ import HomePage from "../ui/pages/HomePage";
 import LoginPage from "../ui/pages/LoginPage";
 import RegisterPage from "../ui/pages/RegisterPage";
 import SettingsPage from "../ui/pages/SettingsPage";
+import StartPage from "../ui/pages/StartPage";
 import Root from "../ui/templates/Root";
 
 const router = createBrowserRouter([
@@ -10,7 +11,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      { path: "settings", element: <SettingsPage /> },
+      { path: "/settings", element: <SettingsPage /> },
+      { path: "/start", element: <StartPage /> },
 
       { path: "/register", element: <RegisterPage /> },
       { path: "/login", element: <LoginPage /> },

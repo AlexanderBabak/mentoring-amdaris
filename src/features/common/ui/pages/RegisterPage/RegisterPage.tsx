@@ -11,7 +11,7 @@ const RegisterPage = () => {
           Sign Up
         </Typography>
         <Typography variant="h2" sx={{ color: (theme) => theme.palette.grey[400] }}>
-          Please register to use Amdaris Babak
+          Please register to use Amdaris Marketplace
         </Typography>
       </Box>
 

@@ -1,10 +1,11 @@
 import { FC, PropsWithChildren } from "react";
 import { Box, Stack } from "@mui/material";
+import { BACKGROUND_GRADIENT } from "../../../libs/theme";
 
 const AuthWrapper: FC<PropsWithChildren> = ({ children }) => (
   <Stack
     sx={{
-      bgcolor: (theme) => theme.palette.primary.contrastText,
+      backgroundImage: BACKGROUND_GRADIENT,
       flexGrow: 1,
       justifyContent: "center",
       placeItems: "center",

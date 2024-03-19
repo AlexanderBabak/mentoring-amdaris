@@ -33,7 +33,7 @@ const NavBar = () => {
 
   return (
     <AppBar position="static">
-      <Container>
+      <Container fixed maxWidth="xl">
         <Toolbar>
           <Typography variant="h1" component="div">
             <RouterLink to="/" style={{ textDecoration: "none", color: "white" }}>
