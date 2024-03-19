@@ -1,13 +1,15 @@
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { ShoppingBag } from "@mui/icons-material";
-import { AppBar, Box, Button, Container, Stack, Toolbar, Typography } from "@mui/material";
+import { ShoppingBag, Settings } from "@mui/icons-material";
+import { AppBar, Box, Button, Container, IconButton, Stack, Toolbar, Typography } from "@mui/material";
 import useCustomDialog from "../../../hooks/useCustomDialog";
 import useGetUser from "../../../hooks/useGetUser/useGetUser";
+import { useTheme } from "../../../libs/theme";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const { user, logout } = useGetUser();
+  const { user, isAdmin, logout } = useGetUser();
   const { openDialog, closeDialog } = useCustomDialog();
+  const { theme } = useTheme();
 
   const handleLogout = () => {
     openDialog({
@@ -43,19 +45,32 @@ const NavBar = () => {
           </Typography>
           <Box alignItems="right" sx={{ flexGrow: 1, textAlign: "right" }}>
             {user ? (
-              <Button
-                data-testid="logout"
-                variant="outlined"
-                onClick={handleLogout}
-                sx={{
-                  backgroundColor: (theme) => theme.palette.common.white,
-                  "&:hover": (theme) => ({
-                    backgroundColor: theme.palette.common.white,
-                  }),
-                }}
-              >
-                Logout
-              </Button>
+              <>
+                {isAdmin && (
+                  <IconButton
+                    onClick={() => {
+                      navigate("/settings");
+                    }}
+                    sx={{ marginRight: 1 }}
+                  >
+                    <Settings sx={{ color: theme.palette.primary.contrastText }} fontSize="large" />
+                  </IconButton>
+                )}
+
+                <Button
+                  data-testid="logout"
+                  variant="outlined"
+                  onClick={handleLogout}
+                  sx={{
+                    backgroundColor: (theme) => theme.palette.common.white,
+                    "&:hover": (theme) => ({
+                      backgroundColor: theme.palette.common.white,
+                    }),
+                  }}
+                >
+                  Logout
+                </Button>
+              </>
             ) : (
               <>
                 <Button
