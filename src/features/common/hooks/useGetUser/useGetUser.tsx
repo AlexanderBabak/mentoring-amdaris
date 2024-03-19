@@ -6,6 +6,7 @@ import { UserResponse } from "../../types/auth";
 
 export interface UserContextType {
   user: UserResponse | null;
+  isAdmin: boolean;
   login: (userData: UserResponse) => {};
   logout: () => {};
 }
@@ -70,8 +71,10 @@ export const UserProvider = (props: any) => {
     dispatch({ type: "LOGOUT" });
   };
 
+  const isAdmin = state?.user?.role === "admin";
+
   return (
-    <UserContext.Provider value={{ user: state.user, login, logout }} {...props}>
+    <UserContext.Provider value={{ user: state.user, login, logout, isAdmin }} {...props}>
       {props.children}
     </UserContext.Provider>
   );
