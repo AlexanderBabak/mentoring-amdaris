@@ -1,5 +1,5 @@
-import { Container } from "@mui/material";
-
-const HomePage = () => <Container>Home page</Container>;
+const HomePage = () => {
+  return <div>HOME</div>;
+};
 
 export default HomePage;

@@ -8,7 +8,7 @@ import useSnackbar from "../useSnackbar";
 
 const useRegisterUser = () => {
   const { openSnackbar, closeSnackbar } = useSnackbar();
-  const context = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   return useMutation(REGISTER_USER, {
@@ -20,7 +20,7 @@ const useRegisterUser = () => {
         alertAction: false,
       });
 
-      context.login(userData);
+      login(userData);
       navigate("/");
     },
     onError({ graphQLErrors }) {
