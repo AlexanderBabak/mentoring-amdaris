@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import "@fontsource/source-sans-pro";
 import { CssBaseline, Stack, ThemeProvider } from "@mui/material";
+import { CustomDialogProvider } from "../../../hooks/useCustomDialog";
 import { UserProvider } from "../../../hooks/useGetUser";
 import { SnackbarProvider } from "../../../hooks/useSnackbar";
 import client from "../../../libs/apollo/apolloClient";
@@ -22,12 +23,14 @@ const Root = () => {
           <CssBaseline />
           <ErrorBoundary FallbackComponent={ErrorFallbackPage}>
             <SnackbarProvider>
-              <Suspense fallback={<Loading />}>
-                <Stack sx={{ height: "100vh" }}>
-                  <NavBar />
-                  <Outlet />
-                </Stack>
-              </Suspense>
+              <CustomDialogProvider>
+                <Suspense fallback={<Loading />}>
+                  <Stack sx={{ height: "100vh" }}>
+                    <NavBar />
+                    <Outlet />
+                  </Stack>
+                </Suspense>
+              </CustomDialogProvider>
             </SnackbarProvider>
           </ErrorBoundary>
         </ThemeProvider>

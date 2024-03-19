@@ -8,7 +8,7 @@ const HomePage = () => {
       <div>{user?.username}</div>
       <div>{user?.email}</div>
       <div>{user?.role}</div>
-      <div>{`${isAdmin}`}</div>
+      <div>{user?.role && `${isAdmin}`}</div>
     </Container>
   );
 };

@@ -1,15 +1,32 @@
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material";
+import { ShoppingBag } from "@mui/icons-material";
+import { AppBar, Box, Button, Container, Stack, Toolbar, Typography } from "@mui/material";
+import useCustomDialog from "../../../hooks/useCustomDialog";
 import useGetUser from "../../../hooks/useGetUser/useGetUser";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const { user, logout } = useGetUser();
+  const { openDialog, closeDialog } = useCustomDialog();
 
   const handleLogout = () => {
-    // TODO: dialog here
-    logout();
-    navigate("/");
+    openDialog({
+      title: "Are you sure to logout?",
+      description: (
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 0.25 }}>
+          <Typography>Only authorized users can have access to the list of products on our marketplace.</Typography>
+        </Box>
+      ),
+      confirmButtonProps: {
+        "data-testid": "logout-confirm-button",
+        displayText: "Logout",
+        onConfirm: () => {
+          logout();
+          closeDialog();
+          navigate("/");
+        },
+      },
+    });
   };
 
   return (
@@ -18,7 +35,10 @@ const NavBar = () => {
         <Toolbar>
           <Typography variant="h1" component="div">
             <RouterLink to="/" style={{ textDecoration: "none", color: "white" }}>
-              AmdarisBabak
+              <Stack flexDirection="row" gap={1} alignItems="center">
+                <ShoppingBag />
+                AMDARIS MARKETPLACE
+              </Stack>
             </RouterLink>
           </Typography>
           <Box alignItems="right" sx={{ flexGrow: 1, textAlign: "right" }}>
