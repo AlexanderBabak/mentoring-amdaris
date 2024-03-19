@@ -45,6 +45,7 @@ exports[`Loading should work as expected 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  height: 100vh;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;
@@ -148,6 +149,7 @@ exports[`Loading should work as expected with size passed 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  height: 100vh;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;

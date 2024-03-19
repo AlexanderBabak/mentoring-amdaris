@@ -12,6 +12,7 @@ const Loading: FC<LoadingProps> = ({ size, sx }) => (
       flex: 1,
       display: "flex",
       flexDirection: "column",
+      height: "100vh",
       justifyContent: "center",
       alignItems: "center",
       ...sx,
