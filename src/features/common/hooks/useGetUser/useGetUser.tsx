@@ -43,15 +43,17 @@ export const UserProvider = (props: any) => {
   if (localStorage.getItem("token")) {
     // @ts-ignore
     decodedToken = jwtDecode<JwtPayload>(localStorage.getItem("token"));
+    // if the token is expired, the user will be redirected to the authorization page
     if (decodedToken.exp * 1000 < Date.now()) {
       localStorage.removeItem("token");
       decodedToken = null;
     }
   }
 
+  // if there is no user_id in the storage, there will be no request to the server
   const { data } = useQuery(GET_USER_BY_ID, {
     variables: { id: decodedToken?.user_id },
-    fetchPolicy: decodedToken?.user_id ? "cache-and-network" : "standby",
+    fetchPolicy: decodedToken?.user_id && !state.user ? "cache-and-network" : "standby",
   });
 
   if (data?.getUserById) {

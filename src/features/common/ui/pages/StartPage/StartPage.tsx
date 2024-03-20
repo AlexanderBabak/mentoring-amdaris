@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import { BACKGROUND_GRADIENT, MAIN_TEXT_GRADIENT, TEXT_GRADIENT, useTheme } from "../../../libs/theme";
 
 const gradientMainStyle = {
@@ -26,24 +26,26 @@ const StartPage = () => {
         placeItems: "center",
       }}
     >
-      <Stack color={theme.palette.grey[300]} alignItems="center" marginTop={-10}>
-        <Typography variant="h1" fontSize={40} fontWeight={700}>
-          WELCOME TO
-          <Typography
-            component="span"
-            variant="h1"
-            fontSize={40}
-            fontWeight={700}
-            marginLeft={2}
-            sx={gradientMainStyle}
-          >
-            AMDARIS MARKETPLACE
+      <Container fixed>
+        <Stack color={theme.palette.grey[300]} alignItems="center" marginTop={-10} textAlign="center">
+          <Typography variant="h1" fontSize={60} fontWeight={700}>
+            WELCOME TO
+            <Typography
+              component="span"
+              variant="h1"
+              fontSize={60}
+              fontWeight={700}
+              marginLeft={2}
+              sx={gradientMainStyle}
+            >
+              AMDARIS MARKETPLACE
+            </Typography>
           </Typography>
-        </Typography>
-        <Typography variant="h1" sx={gradientStyle}>
-          This is the place where you can buy everything you need
-        </Typography>
-      </Stack>
+          <Typography variant="h1" sx={gradientStyle}>
+            This is the place where you can buy everything you need
+          </Typography>
+        </Stack>
+      </Container>
     </Box>
   );
 };
