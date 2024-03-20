@@ -11,7 +11,7 @@ const useLoginUser = () => {
   const navigate = useNavigate();
 
   return useMutation(LOGIN_USER, {
-    update(_, { data: { loginUser: userData } }) {
+    update(_, { data }) {
       openSnackbar({
         alertSeverity: "success",
         alertTitle: "Successfully Sign In",
@@ -19,7 +19,7 @@ const useLoginUser = () => {
         alertAction: false,
       });
 
-      login(userData);
+      login(data?.loginUser);
       navigate("/");
     },
     onError({ graphQLErrors }) {

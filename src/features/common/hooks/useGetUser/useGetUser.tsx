@@ -1,17 +1,17 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { jwtDecode } from "jwt-decode";
+import { GetUserByIdQuery, LoginUserMutation, User } from "../../../../__generated__/graphql";
 import { GET_USER_BY_ID } from "../../libs/apollo/user";
-import { UserResponse } from "../../types/auth";
 
 export interface UserContextType {
-  user: UserResponse | null;
+  user: GetUserByIdQuery["getUserById"] | null;
   isAdmin: boolean;
-  login: (userData: UserResponse) => {};
+  login: (userData: LoginUserMutation["loginUser"]) => {};
   logout: () => {};
 }
 
-type Action = { type: "LOGIN"; payload: UserResponse } | { type: "LOGOUT" };
+type Action = { type: "LOGIN"; payload: User } | { type: "LOGOUT" };
 type UserState = Pick<UserContextType, "user">;
 
 const initialState: UserState = {
@@ -54,16 +54,18 @@ export const UserProvider = (props: any) => {
     fetchPolicy: decodedToken?.user_id ? "cache-and-network" : "standby",
   });
 
-  if (data) {
+  if (data?.getUserById) {
     initialState.user = data.getUserById;
   }
 
-  const login = (userData: UserResponse) => {
-    localStorage.setItem("token", userData.token);
-    dispatch({
-      type: "LOGIN",
-      payload: userData,
-    });
+  const login = (userData: User) => {
+    if (userData?.token) {
+      localStorage.setItem("token", userData?.token);
+      dispatch({
+        type: "LOGIN",
+        payload: userData,
+      });
+    }
   };
 
   const logout = () => {
