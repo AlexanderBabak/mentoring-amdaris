@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Box, Button, CircularProgress, Stack } from "@mui/material";
+import { LoginInput } from "../../../../../__generated__/graphql";
 import useLoginUser from "../../../hooks/useLoginUser";
-import { LoginParams } from "../../../types/auth";
 import InputStyled from "../../atoms/InputStyled";
 
 const LoginForm = () => {
@@ -11,9 +11,9 @@ const LoginForm = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<LoginParams>();
+  } = useForm<LoginInput>();
 
-  const handleLoginSubmit = (values: LoginParams) => {
+  const handleLoginSubmit = (values: LoginInput) => {
     loginUser({ variables: { loginInput: values } });
   };
 

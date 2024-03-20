@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Box, Button, CircularProgress, Stack } from "@mui/material";
+import { InputMaybe, RegisterInput } from "../../../../../__generated__/graphql";
 import useRegisterUser from "../../../hooks/useRegisterUser";
-import { RegisterParams } from "../../../types/auth";
 import InputStyled from "../../atoms/InputStyled";
 
 const RegisterForm = () => {
@@ -13,12 +13,12 @@ const RegisterForm = () => {
     formState: { errors },
     handleSubmit,
     watch,
-  } = useForm<RegisterParams>();
+  } = useForm<RegisterInput>();
 
-  const password = useRef({});
+  const password = useRef<InputMaybe<string> | undefined>();
   password.current = watch("password", "");
 
-  const handleLoginSubmit = (values: RegisterParams) => {
+  const handleLoginSubmit = (values: RegisterInput) => {
     registerUser({ variables: { registerInput: values } });
   };
 

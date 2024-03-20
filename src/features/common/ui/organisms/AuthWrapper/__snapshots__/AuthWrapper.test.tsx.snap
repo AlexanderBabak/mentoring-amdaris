@@ -9,7 +9,7 @@ exports[`MainWrapper reflect background color by bgcolor props 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: #fff;
+  background-image: linear-gradient(to bottom, #1C2244, #009DC5, #1C2244);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -54,7 +54,7 @@ exports[`MainWrapper should work as expected 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: #fff;
+  background-image: linear-gradient(to bottom, #1C2244, #009DC5, #1C2244);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;

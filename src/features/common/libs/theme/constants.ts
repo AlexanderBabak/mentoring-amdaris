@@ -31,4 +31,8 @@ export const GREY_04 = "#9193A4";
 
 export const SHADOW_01 = "0px 4px 4px 0px #D1D1D140";
 
+export const BACKGROUND_GRADIENT = `linear-gradient(to bottom, ${PRIMARY_NAVY_BLUE}, ${BLUE_CERULEAN}, ${PRIMARY_NAVY_BLUE})`;
+export const MAIN_TEXT_GRADIENT = `linear-gradient(to right, ${BLACK}, ${PRIMARY_NAVY_BLUE})`;
+export const TEXT_GRADIENT = `linear-gradient(to right, ${GREY_01}, ${GREY_03})`;
+
 export const BASE_FONT_SIZE = 14;

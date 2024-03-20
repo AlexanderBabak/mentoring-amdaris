@@ -11,7 +11,7 @@ const LoginPage = () => {
           Sign In
         </Typography>
         <Typography variant="h2" sx={{ color: (theme) => theme.palette.grey[400] }}>
-          Thanks to come back on Amdaris Babak
+          Thanks to come back on Amdaris Marketplace
         </Typography>
       </Box>
 

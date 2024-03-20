@@ -1,15 +1,18 @@
-import { Container } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import useGetUser from "../../../hooks/useGetUser";
 
 const HomePage = () => {
   const { user, isAdmin } = useGetUser();
+
   return (
-    <Container>
-      <div>{user?.username}</div>
-      <div>{user?.email}</div>
-      <div>{user?.role}</div>
-      <div>{user?.role && `${isAdmin}`}</div>
-    </Container>
+    <Stack height="100vh" justifyContent="center" textAlign="center">
+      <Container>
+        <Typography variant="h2">YOU LOGGED AS</Typography>
+        <Typography variant="h1">{user?.username}</Typography>
+        <Typography variant="h1">{user?.email}</Typography>
+        <Typography variant="h1">{`isAdmin - ${isAdmin}`}</Typography>
+      </Container>
+    </Stack>
   );
 };
 
