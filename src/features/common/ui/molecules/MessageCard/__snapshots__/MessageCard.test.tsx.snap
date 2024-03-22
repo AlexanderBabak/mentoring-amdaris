@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageCard should work as expected 1`] = `
+.emotion-0 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 300;
+  font-size: 3.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.00833em;
+  margin-top: 16px;
+}
+
+<body>
+  <div>
+    <div
+      class="MuiBox-root emotion-0"
+      data-testid="message-card"
+    >
+      <img
+        alt="Start searching for user."
+        height="132px"
+        width="132px"
+      />
+      <h2
+        aria-label="Message heading"
+        class="MuiTypography-root MuiTypography-h2 emotion-1"
+      >
+        Start searching for user.
+      </h2>
+      Search for user by email.
+    </div>
+  </div>
+</body>
+`;
