@@ -36,7 +36,7 @@ const NavBar = () => {
       <Container fixed maxWidth="xl">
         <Toolbar>
           <Typography variant="h1" component="div">
-            <RouterLink to={user ? "/" : "start"} style={{ textDecoration: "none", color: "white" }}>
+            <RouterLink to={user ? "home" : "/"} style={{ textDecoration: "none", color: "white" }}>
               <Stack flexDirection="row" gap={1} alignItems="center">
                 <ShoppingBag />
                 AMDARIS MARKETPLACE

@@ -5,7 +5,7 @@ export const AuthProvider = () => {
   const { user } = useGetUser();
 
   if (user) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="home" replace />;
   }
   return <Outlet />;
 };
@@ -14,7 +14,7 @@ export const PrivateRoutesProvider = () => {
   const { user } = useGetUser();
 
   if (!user) {
-    return <Navigate to="start" replace />;
+    return <Navigate to="/" replace />;
   }
   return <Outlet />;
 };
