@@ -1,10 +1,12 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { Button, CircularProgress, Container, SelectChangeEvent, Stack, Typography } from "@mui/material";
 import SearchIcon from "../../../assets/isons/search.svg";
 import ImageFolder from "../../../assets/isons/warning.svg";
 import useSnackbar from "../../../hooks/useSnackbar";
 import { CHANGE_USER_ROLE, GET_USER_BY_EMAIL } from "../../../libs/apollo/user";
+import { searchParamsToObject, withoutFalsyValues } from "../../../libs/utils";
 import Loading from "../../atoms/Loading";
 import MessageCard from "../../molecules/MessageCard";
 import SearchBar from "../../molecules/SearchBar";
@@ -14,11 +16,12 @@ import MainWrapper from "../../organisms/MainWrapper";
 
 const SettingsPage = () => {
   const { openSnackbar, closeSnackbar } = useSnackbar();
-  const [searchTerms, setSearchTerms] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerm = useMemo<string>(() => searchParams.get("userSearchEmail") || "", [searchParams]);
 
   const { data, loading } = useQuery(GET_USER_BY_EMAIL, {
-    variables: { email: searchTerms },
-    fetchPolicy: searchTerms ? "cache-and-network" : "standby",
+    variables: { email: searchTerm },
+    fetchPolicy: searchTerm ? "cache-and-network" : "standby",
     onCompleted({ getUserByEmail }) {
       if (getUserByEmail?.role) {
         setRole(getUserByEmail?.role);
@@ -57,7 +60,7 @@ const SettingsPage = () => {
 
   const [changeUserRole, { loading: changeRoleLoading }] = useMutation(CHANGE_USER_ROLE, {
     update() {
-      setSearchTerms("");
+      setSearchParams("");
       openSnackbar({
         alertSeverity: "success",
         alertTitle: "Role successfully changed",
@@ -96,9 +99,17 @@ const SettingsPage = () => {
     }
   };
 
-  const handleSearch = useCallback((searchText: string) => {
-    setSearchTerms(searchText);
-  }, []);
+  const handleSearch = useCallback(
+    (searchText: string) => {
+      const newQueryParams = {
+        ...searchParamsToObject(searchParams),
+        userSearchEmail: [searchText],
+      };
+
+      setSearchParams(withoutFalsyValues(newQueryParams));
+    },
+    [searchParams, setSearchParams],
+  );
 
   const selectItems: SelectItemsProps[] = [
     { name: "Admin", value: "admin" },
@@ -125,7 +136,7 @@ const SettingsPage = () => {
             Change user role
           </Typography>
           <Container maxWidth="sm">
-            <SearchBar onSearch={handleSearch} value={searchTerms} />
+            <SearchBar onSearch={handleSearch} value={searchTerm} />
 
             {loading && (
               <Stack padding={6}>
@@ -133,7 +144,7 @@ const SettingsPage = () => {
               </Stack>
             )}
 
-            {!searchTerms && !loading && (
+            {!searchTerm && !loading && (
               <Stack padding={6}>
                 <MessageCard
                   imgWidth="42px"
@@ -144,7 +155,7 @@ const SettingsPage = () => {
               </Stack>
             )}
 
-            {searchTerms && !loading && !data?.getUserByEmail && (
+            {searchTerm && !loading && !data?.getUserByEmail && (
               <Stack padding={6}>
                 <MessageCard
                   image={ImageFolder}
@@ -155,7 +166,7 @@ const SettingsPage = () => {
               </Stack>
             )}
 
-            {searchTerms && !loading && data?.getUserByEmail && (
+            {searchTerm && !loading && data?.getUserByEmail && (
               <>
                 <Typography variant="h2" marginTop={5} marginBottom={1}>
                   <b>Username:</b> {data?.getUserByEmail.username}
