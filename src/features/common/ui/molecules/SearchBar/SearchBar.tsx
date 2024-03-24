@@ -1,4 +1,12 @@
-import { ChangeEventHandler, FC, KeyboardEventHandler, MouseEventHandler, useCallback, useState } from "react";
+import {
+  ChangeEventHandler,
+  FC,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box, Button, IconButton, InputBase, SxProps } from "@mui/material";
@@ -13,13 +21,20 @@ export interface SearchBarProps {
 const SearchBar: FC<SearchBarProps> = ({ placeholder, onSearch, value, wrapperSx }) => {
   const [inputValue, setInputValue] = useState(value || "");
 
+  useEffect(() => {
+    if (value === "") {
+      setInputValue("");
+    }
+  }, [value]);
+
   const handleValueChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
     setInputValue(event.target.value);
   }, []);
 
   const handleClearClick: MouseEventHandler = useCallback(() => {
+    onSearch("");
     setInputValue("");
-  }, []);
+  }, [onSearch]);
 
   const handleSearchClick: MouseEventHandler = useCallback(() => onSearch(inputValue), [inputValue, onSearch]);
 
@@ -34,6 +49,7 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder, onSearch, value, wrapperSx
       }
 
       if (event.key === "Escape") {
+        onSearch("");
         setInputValue("");
       }
     },
