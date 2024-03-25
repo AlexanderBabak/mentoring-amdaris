@@ -13,6 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n  query Query {\n    getFeatureToggle {\n      showOldCollection\n      showSales\n    }\n  }\n": types.QueryDocument,
+    "\n  mutation Mutation($values: FeatureSwitch) {\n    changeFeatureToggle(values: $values) {\n      showOldCollection\n      showSales\n    }\n  }\n": types.MutationDocument,
     "\n  mutation RegisterUser($registerInput: RegisterInput) {\n    registerUser(registerInput: $registerInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n": types.RegisterUserDocument,
     "\n  mutation LoginUser($loginInput: LoginInput) {\n    loginUser(loginInput: $loginInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n": types.LoginUserDocument,
     "\n  query GetUserById($id: ID!) {\n    getUserById(ID: $id) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n": types.GetUserByIdDocument,
@@ -34,6 +36,14 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query Query {\n    getFeatureToggle {\n      showOldCollection\n      showSales\n    }\n  }\n"): (typeof documents)["\n  query Query {\n    getFeatureToggle {\n      showOldCollection\n      showSales\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation Mutation($values: FeatureSwitch) {\n    changeFeatureToggle(values: $values) {\n      showOldCollection\n      showSales\n    }\n  }\n"): (typeof documents)["\n  mutation Mutation($values: FeatureSwitch) {\n    changeFeatureToggle(values: $values) {\n      showOldCollection\n      showSales\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

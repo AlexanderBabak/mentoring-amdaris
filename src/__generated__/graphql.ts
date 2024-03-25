@@ -16,6 +16,18 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type FeatureSwitch = {
+  showOldCollection?: InputMaybe<Scalars['Boolean']['input']>;
+  showSales?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type FeatureToggle = {
+  __typename?: 'FeatureToggle';
+  id?: Maybe<Scalars['String']['output']>;
+  showOldCollection?: Maybe<Scalars['Boolean']['output']>;
+  showSales?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type LoginInput = {
   email?: InputMaybe<Scalars['String']['input']>;
   password?: InputMaybe<Scalars['String']['input']>;
@@ -23,9 +35,15 @@ export type LoginInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  changeFeatureToggle?: Maybe<FeatureToggle>;
   changeUserRole?: Maybe<Scalars['String']['output']>;
   loginUser?: Maybe<User>;
   registerUser?: Maybe<User>;
+};
+
+
+export type MutationChangeFeatureToggleArgs = {
+  values?: InputMaybe<FeatureSwitch>;
 };
 
 
@@ -46,6 +64,7 @@ export type MutationRegisterUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  getFeatureToggle?: Maybe<FeatureToggle>;
   getUserByEmail?: Maybe<User>;
   getUserById?: Maybe<User>;
 };
@@ -76,6 +95,18 @@ export type User = {
   token?: Maybe<Scalars['String']['output']>;
   username?: Maybe<Scalars['String']['output']>;
 };
+
+export type QueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type QueryQuery = { __typename?: 'Query', getFeatureToggle?: { __typename?: 'FeatureToggle', showOldCollection?: boolean | null, showSales?: boolean | null } | null };
+
+export type MutationMutationVariables = Exact<{
+  values?: InputMaybe<FeatureSwitch>;
+}>;
+
+
+export type MutationMutation = { __typename?: 'Mutation', changeFeatureToggle?: { __typename?: 'FeatureToggle', showOldCollection?: boolean | null, showSales?: boolean | null } | null };
 
 export type RegisterUserMutationVariables = Exact<{
   registerInput?: InputMaybe<RegisterInput>;
@@ -114,6 +145,8 @@ export type ChangeUserRoleMutationVariables = Exact<{
 export type ChangeUserRoleMutation = { __typename?: 'Mutation', changeUserRole?: string | null };
 
 
+export const QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Query"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getFeatureToggle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"showOldCollection"}},{"kind":"Field","name":{"kind":"Name","value":"showSales"}}]}}]}}]} as unknown as DocumentNode<QueryQuery, QueryQueryVariables>;
+export const MutationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Mutation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"values"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"FeatureSwitch"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"changeFeatureToggle"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"values"},"value":{"kind":"Variable","name":{"kind":"Name","value":"values"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"showOldCollection"}},{"kind":"Field","name":{"kind":"Name","value":"showSales"}}]}}]}}]} as unknown as DocumentNode<MutationMutation, MutationMutationVariables>;
 export const RegisterUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"registerInput"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"RegisterInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"registerUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"registerInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"registerInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}}]}}]} as unknown as DocumentNode<RegisterUserMutation, RegisterUserMutationVariables>;
 export const LoginUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"LoginUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"loginInput"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"LoginInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"loginUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"loginInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"loginInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}}]}}]} as unknown as DocumentNode<LoginUserMutation, LoginUserMutationVariables>;
 export const GetUserByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetUserById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getUserById"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"ID"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}}]}}]} as unknown as DocumentNode<GetUserByIdQuery, GetUserByIdQueryVariables>;
