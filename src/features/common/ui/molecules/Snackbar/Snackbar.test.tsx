@@ -38,7 +38,7 @@ describe("Snackbar", () => {
     expect(onCloseMock).toHaveBeenCalledTimes(1);
   });
 
-  it("should render as expected", async () => {
+  it("should be rendered as expected", async () => {
     const { baseElement } = render(<Snackbar {...baseProps} />);
 
     expect(baseElement).toMatchSnapshot();

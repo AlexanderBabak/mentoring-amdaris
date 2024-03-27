@@ -5,7 +5,7 @@ describe("utils", () => {
   beforeAll(() => jest.useFakeTimers());
   afterAll(() => jest.useRealTimers());
 
-  it("searchParamsToObject() should work as expected", async () => {
+  it("searchParamsToObject() should convert URLSearchParams object into JS object", async () => {
     const object = {
       test: ["test"],
       test2: ["test2"],
@@ -16,7 +16,7 @@ describe("utils", () => {
     expect(object).toStrictEqual(searchParamsToObject(searchParams));
   });
 
-  describe("withoutFalsyValues() should work as expected", () => {
+  describe("withoutFalsyValues() should remove falsy values", () => {
     it("when using primitive values", async () => {
       const object = {
         test: "test",

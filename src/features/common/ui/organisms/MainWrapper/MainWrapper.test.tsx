@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import MainWrapper from "./MainWrapper";
 
 describe("MainWrapper", () => {
-  it("should work as expected", async () => {
+  it("should be rendered as expected", async () => {
     const { baseElement } = render(
       <MainWrapper>
         <div data-testid="mock-Component" />
