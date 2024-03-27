@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Box, Button, CircularProgress, Stack } from "@mui/material";
-import { InputMaybe, RegisterInput } from "../../../../../__generated__/graphql";
-import useRegisterUser from "../../../hooks/useRegisterUser";
-import InputStyled from "../../atoms/InputStyled";
+import { InputMaybe, RegisterInput } from "__generated__/graphql";
+import useRegisterUser from "features/common/hooks/useRegisterUser";
+import InputStyled from "features/common/ui/atoms/InputStyled";
 
 const RegisterForm = () => {
   const [registerUser, { loading }] = useRegisterUser();

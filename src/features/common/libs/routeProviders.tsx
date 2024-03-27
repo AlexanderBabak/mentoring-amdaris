@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import useGetUser from "../hooks/useGetUser";
+import useGetUser from "features/common/hooks/useGetUser";
 
 export const AuthProvider = () => {
   const token = localStorage.getItem("token");

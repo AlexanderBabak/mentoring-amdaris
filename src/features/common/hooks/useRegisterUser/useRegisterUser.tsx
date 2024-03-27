@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Stack, Typography } from "@mui/material";
-import { REGISTER_USER } from "../../libs/apollo/user";
-import useGetUser from "../useGetUser/useGetUser";
+import useGetUser from "features/common/hooks/useGetUser";
+import { REGISTER_USER } from "features/common/libs/apollo/user";
 import useSnackbar from "../useSnackbar";
 
 const useRegisterUser = () => {

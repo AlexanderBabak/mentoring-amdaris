@@ -1,9 +1,9 @@
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { ShoppingBag, Settings, MonetizationOn, Archive } from "@mui/icons-material";
 import { AppBar, Box, Button, Container, IconButton, Stack, Toolbar, Tooltip, Typography } from "@mui/material";
-import useCustomDialog from "../../../hooks/useCustomDialog";
-import useGetUser from "../../../hooks/useGetUser/useGetUser";
-import { useTheme } from "../../../libs/theme";
+import useCustomDialog from "features/common/hooks/useCustomDialog";
+import useGetUser from "features/common/hooks/useGetUser/useGetUser";
+import { useTheme } from "features/common/libs/theme";
 
 const NavBar = () => {
   const navigate = useNavigate();

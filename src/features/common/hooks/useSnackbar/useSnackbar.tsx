@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useCallback, useContext, useState } from "react";
-import Snackbar, { SnackbarProps } from "../../ui/molecules/Snackbar/Snackbar";
+import Snackbar, { SnackbarProps } from "features/common/ui/molecules/Snackbar/Snackbar";
 
 export interface OpenSnackbarArgs extends Omit<SnackbarProps, "onClose" | "open"> {}
 

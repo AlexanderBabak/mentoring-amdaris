@@ -4,14 +4,14 @@ import { Outlet } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import "@fontsource/source-sans-pro";
 import { CssBaseline, Stack, ThemeProvider } from "@mui/material";
-import { CustomDialogProvider } from "../../../hooks/useCustomDialog";
-import { UserProvider } from "../../../hooks/useGetUser";
-import { SnackbarProvider } from "../../../hooks/useSnackbar";
-import client from "../../../libs/apollo/apolloClient";
-import { useTheme } from "../../../libs/theme";
-import Loading from "../../atoms/Loading/Loading";
-import NavBar from "../../organisms/Navbar";
-import ErrorFallbackPage from "../../pages/ErrorFallbackPage";
+import { CustomDialogProvider } from "features/common/hooks/useCustomDialog";
+import { UserProvider } from "features/common/hooks/useGetUser";
+import { SnackbarProvider } from "features/common/hooks/useSnackbar";
+import client from "features/common/libs/apollo/apolloClient";
+import { useTheme } from "features/common/libs/theme";
+import Loading from "features/common/ui/atoms/Loading/Loading";
+import NavBar from "features/common/ui/organisms/Navbar";
+import ErrorFallbackPage from "features/common/ui/pages/ErrorFallbackPage";
 
 const Root = () => {
   const { theme } = useTheme();

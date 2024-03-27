@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { Button, Stack, Typography } from "@mui/material";
-import { GET_USER_BY_EMAIL } from "../../libs/apollo/user";
+import { GET_USER_BY_EMAIL } from "features/common/libs/apollo/user";
 import useSnackbar from "../useSnackbar";
 
 const useGetUserByEmail = (searchTerm: string, setRole: Dispatch<SetStateAction<string>>) => {

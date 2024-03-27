@@ -1,5 +1,5 @@
 import { CSSObject, Theme } from "@mui/material";
-import * as THEME_CONSTANTS from "../../../constants";
+import * as THEME_CONSTANTS from "features/common/libs//theme/constants";
 
 const controlButtonStyles = (theme: Theme): CSSObject => ({
   color: THEME_CONSTANTS.BLUE_OCEAN,

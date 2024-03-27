@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageCard should work as expected 1`] = `
+exports[`MessageCard should be rendered with the image 1`] = `
 .emotion-0 {
   -webkit-flex: 1;
   -ms-flex: 1;

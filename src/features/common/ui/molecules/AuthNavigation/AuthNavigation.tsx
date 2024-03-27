@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import LinkStyled from "../../atoms/LinkStyled";
+import LinkStyled from "features/common/ui/atoms/LinkStyled";
 
 type AuthNavigationProps = {
   title: string;

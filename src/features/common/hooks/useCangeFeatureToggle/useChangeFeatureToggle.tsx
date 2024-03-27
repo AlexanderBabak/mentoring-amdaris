@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Stack, Typography } from "@mui/material";
-import { CHANGE_FEATURE_TOGGLE, GET_FEATURE_TOGGLE } from "../../libs/apollo/featureToggle";
+import { CHANGE_FEATURE_TOGGLE, GET_FEATURE_TOGGLE } from "features/common/libs/apollo/featureToggle";
 import useSnackbar from "../useSnackbar";
 
 const useChangeFeatureToggle = () => {

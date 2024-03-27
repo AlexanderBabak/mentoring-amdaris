@@ -1,9 +1,8 @@
 import React, { ChangeEvent } from "react";
-import { createSearchParams } from "react-router-dom";
 import { Container, Stack, Switch, Typography } from "@mui/material";
-import { FeatureSwitch } from "../../../../../__generated__/graphql";
-import useChangeFeatureToggle from "../../../hooks/useCangeFeatureToggle";
-import useGetUser from "../../../hooks/useGetUser";
+import { FeatureSwitch } from "__generated__/graphql";
+import useChangeFeatureToggle from "features/common/hooks/useCangeFeatureToggle";
+import useGetUser from "features/common/hooks/useGetUser";
 
 const FeatureToggleModule = () => {
   const { featureToggle } = useGetUser();

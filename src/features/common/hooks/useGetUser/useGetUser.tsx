@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { useQuery } from "@apollo/react-hooks";
+import { FeatureSwitch, GetUserByIdQuery, LoginUserMutation, User } from "__generated__/graphql";
 import { jwtDecode } from "jwt-decode";
-import { FeatureSwitch, GetUserByIdQuery, LoginUserMutation, User } from "../../../../__generated__/graphql";
-import { GET_FEATURE_TOGGLE } from "../../libs/apollo/featureToggle";
-import { GET_USER_BY_ID } from "../../libs/apollo/user";
+import { GET_FEATURE_TOGGLE } from "features/common/libs/apollo/featureToggle";
+import { GET_USER_BY_ID } from "features/common/libs/apollo/user";
 
 export interface UserContextType {
   user: GetUserByIdQuery["getUserById"] | null;

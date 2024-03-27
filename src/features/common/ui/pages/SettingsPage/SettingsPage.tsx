@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Typography } from "@mui/material";
-import ChangeRoleModule from "../../organisms/ChangeRoleModule";
-import FeatureToggleModule from "../../organisms/FeatureToggleModule";
-import MainWrapper from "../../organisms/MainWrapper";
+import ChangeRoleModule from "features/common/ui/organisms/ChangeRoleModule";
+import FeatureToggleModule from "features/common/ui/organisms/FeatureToggleModule";
+import MainWrapper from "features/common/ui/organisms/MainWrapper";
 
 const SettingsPage = () => {
   return (

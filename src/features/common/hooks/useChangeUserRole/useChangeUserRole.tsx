@@ -2,7 +2,7 @@ import React from "react";
 import { SetURLSearchParams } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Stack, Typography } from "@mui/material";
-import { CHANGE_USER_ROLE } from "../../libs/apollo/user";
+import { CHANGE_USER_ROLE } from "features/common/libs/apollo/user";
 import useSnackbar from "../useSnackbar";
 
 const useChangeUserRole = (setSearchParams: SetURLSearchParams) => {

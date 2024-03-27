@@ -29,7 +29,7 @@ exports[`MainWrapper reflect background color by bgcolor props 1`] = `
 </body>
 `;
 
-exports[`MainWrapper should work as expected 1`] = `
+exports[`MainWrapper should be rendered as expected 1`] = `
 .emotion-0 {
   display: -webkit-box;
   display: -webkit-flex;

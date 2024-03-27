@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loading should work as expected 1`] = `
+exports[`Loading should be rendered as expected 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -104,7 +104,7 @@ exports[`Loading should work as expected 1`] = `
 </body>
 `;
 
-exports[`Loading should work as expected with size passed 1`] = `
+exports[`Loading should be rendered as expected with size passed 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: rotate(0deg);

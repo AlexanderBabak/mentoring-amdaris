@@ -1,16 +1,16 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Button, CircularProgress, Container, SelectChangeEvent, Stack, Typography } from "@mui/material";
-import SearchIcon from "../../../assets/isons/search.svg";
-import ImageFolder from "../../../assets/isons/warning.svg";
-import useChangeUserRole from "../../../hooks/useChangeUserRole";
-import useGetUserByEmail from "../../../hooks/useGetUserByEmail";
-import { searchParamsToObject, withoutFalsyValues } from "../../../libs/utils";
-import Loading from "../../atoms/Loading";
-import MessageCard from "../../molecules/MessageCard";
-import SearchBar from "../../molecules/SearchBar";
-import SelectCustom from "../../molecules/Select";
-import { SelectItemsProps } from "../../molecules/Select/Select";
+import SearchIcon from "features/common/assets/isons/search.svg";
+import ImageFolder from "features/common/assets/isons/warning.svg";
+import useChangeUserRole from "features/common/hooks/useChangeUserRole";
+import useGetUserByEmail from "features/common/hooks/useGetUserByEmail";
+import { searchParamsToObject, withoutFalsyValues } from "features/common/libs/utils";
+import Loading from "features/common/ui/atoms/Loading";
+import MessageCard from "features/common/ui/molecules/MessageCard";
+import SearchBar from "features/common/ui/molecules/SearchBar";
+import SelectCustom from "features/common/ui/molecules/Select";
+import { SelectItemsProps } from "features/common/ui/molecules/Select/Select";
 
 const ChangeRoleModule = () => {
   const [searchParams, setSearchParams] = useSearchParams();
