@@ -9,8 +9,9 @@ import StartPage from "features/common/ui/pages/StartPage";
 import Root from "features/common/ui/templates/Root";
 import { AuthProvider, PrivateRoutesProvider } from "./routeProviders";
 
-const showOldCollection = JSON.parse(localStorage.getItem("featureToggle") || "").showOldCollection;
-const showSales = JSON.parse(localStorage.getItem("featureToggle") || "").showSales;
+const featureToggle = JSON.parse(localStorage.getItem("featureToggle") || "{}");
+const showOldCollection = featureToggle.showOldCollection || false;
+const showSales = featureToggle.showSales || false;
 
 const router = createBrowserRouter(
   createRoutesFromElements(
