@@ -1,5 +1,5 @@
 import { Container, Stack, Typography } from "@mui/material";
-import useGetUser from "../../../hooks/useGetUser";
+import useGetUser from "features/common/hooks/useGetUser";
 
 const HomePage = () => {
   const { user, isAdmin } = useGetUser();

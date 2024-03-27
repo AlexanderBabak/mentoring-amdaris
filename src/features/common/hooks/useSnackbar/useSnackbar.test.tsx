@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import useSnackbar, { SnackbarProvider } from "./useSnackbar";
 
 describe("useSnackbar", () => {
-  it("should work as expected", async () => {
+  it("should be opened and closed after the user clicks", async () => {
     const MockComponent = () => {
       const { openSnackbar, closeSnackbar } = useSnackbar();
 

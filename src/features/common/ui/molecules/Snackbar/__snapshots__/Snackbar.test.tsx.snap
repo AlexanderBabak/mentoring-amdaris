@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snackbar should render as expected 1`] = `
+exports[`Snackbar should be rendered as expected 1`] = `
 .emotion-0 {
   z-index: 1400;
   position: fixed;

@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import AuthNavigation from "../../molecules/AuthNavigation";
-import AuthWrapper from "../../organisms/AuthWrapper";
-import RegisterForm from "../../organisms/RegisterForm";
+import AuthNavigation from "features/common/ui/molecules/AuthNavigation";
+import AuthWrapper from "features/common/ui/organisms/AuthWrapper";
+import RegisterForm from "features/common/ui/organisms/RegisterForm";
 
 const RegisterPage = () => {
   return (

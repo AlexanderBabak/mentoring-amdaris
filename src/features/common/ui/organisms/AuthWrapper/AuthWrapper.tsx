@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import { Box, Stack } from "@mui/material";
-import { BACKGROUND_GRADIENT } from "../../../libs/theme";
+import { BACKGROUND_GRADIENT } from "features/common/libs/theme";
 
 const AuthWrapper: FC<PropsWithChildren> = ({ children }) => (
   <Stack

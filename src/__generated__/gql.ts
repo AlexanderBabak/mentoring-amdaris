@@ -1,5 +1,6 @@
-import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/core";
-import * as types from "./graphql";
+/* eslint-disable */
+import * as types from './graphql';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
 /**
  * Map of all GraphQL operations in the project.
@@ -12,14 +13,13 @@ import * as types from "./graphql";
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-  "\n  mutation RegisterUser($registerInput: RegisterInput) {\n    registerUser(registerInput: $registerInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n":
-    types.RegisterUserDocument,
-  "\n  mutation LoginUser($loginInput: LoginInput) {\n    loginUser(loginInput: $loginInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n":
-    types.LoginUserDocument,
-  "\n  query GetUserById($id: ID!) {\n    getUserById(ID: $id) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n":
-    types.GetUserByIdDocument,
-  "\n  query GetUserByEmail($email: String!) {\n    getUserByEmail(email: $email) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n":
-    types.GetUserByEmailDocument,
+    "\n  query Query {\n    getFeatureToggle {\n      showOldCollection\n      showSales\n    }\n  }\n": types.QueryDocument,
+    "\n  mutation Mutation($values: FeatureSwitch) {\n    changeFeatureToggle(values: $values) {\n      showOldCollection\n      showSales\n    }\n  }\n": types.MutationDocument,
+    "\n  mutation RegisterUser($registerInput: RegisterInput) {\n    registerUser(registerInput: $registerInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n": types.RegisterUserDocument,
+    "\n  mutation LoginUser($loginInput: LoginInput) {\n    loginUser(loginInput: $loginInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n": types.LoginUserDocument,
+    "\n  query GetUserById($id: ID!) {\n    getUserById(ID: $id) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n": types.GetUserByIdDocument,
+    "\n  query GetUserByEmail($email: String!) {\n    getUserByEmail(email: $email) {\n      email\n      id\n      role\n      username\n    }\n  }\n": types.GetUserByEmailDocument,
+    "\n  mutation ChangeUserRole($id: ID!, $role: String!) {\n    changeUserRole(ID: $id, role: $role)\n  }\n": types.ChangeUserRoleDocument,
 };
 
 /**
@@ -39,31 +39,34 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(
-  source: "\n  mutation RegisterUser($registerInput: RegisterInput) {\n    registerUser(registerInput: $registerInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n",
-): (typeof documents)["\n  mutation RegisterUser($registerInput: RegisterInput) {\n    registerUser(registerInput: $registerInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"];
+export function gql(source: "\n  query Query {\n    getFeatureToggle {\n      showOldCollection\n      showSales\n    }\n  }\n"): (typeof documents)["\n  query Query {\n    getFeatureToggle {\n      showOldCollection\n      showSales\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(
-  source: "\n  mutation LoginUser($loginInput: LoginInput) {\n    loginUser(loginInput: $loginInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n",
-): (typeof documents)["\n  mutation LoginUser($loginInput: LoginInput) {\n    loginUser(loginInput: $loginInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"];
+export function gql(source: "\n  mutation Mutation($values: FeatureSwitch) {\n    changeFeatureToggle(values: $values) {\n      showOldCollection\n      showSales\n    }\n  }\n"): (typeof documents)["\n  mutation Mutation($values: FeatureSwitch) {\n    changeFeatureToggle(values: $values) {\n      showOldCollection\n      showSales\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(
-  source: "\n  query GetUserById($id: ID!) {\n    getUserById(ID: $id) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n",
-): (typeof documents)["\n  query GetUserById($id: ID!) {\n    getUserById(ID: $id) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"];
+export function gql(source: "\n  mutation RegisterUser($registerInput: RegisterInput) {\n    registerUser(registerInput: $registerInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"): (typeof documents)["\n  mutation RegisterUser($registerInput: RegisterInput) {\n    registerUser(registerInput: $registerInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(
-  source: "\n  query GetUserByEmail($email: String!) {\n    getUserByEmail(email: $email) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n",
-): (typeof documents)["\n  query GetUserByEmail($email: String!) {\n    getUserByEmail(email: $email) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"];
+export function gql(source: "\n  mutation LoginUser($loginInput: LoginInput) {\n    loginUser(loginInput: $loginInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"): (typeof documents)["\n  mutation LoginUser($loginInput: LoginInput) {\n    loginUser(loginInput: $loginInput) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query GetUserById($id: ID!) {\n    getUserById(ID: $id) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"): (typeof documents)["\n  query GetUserById($id: ID!) {\n    getUserById(ID: $id) {\n      email\n      id\n      role\n      token\n      username\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query GetUserByEmail($email: String!) {\n    getUserByEmail(email: $email) {\n      email\n      id\n      role\n      username\n    }\n  }\n"): (typeof documents)["\n  query GetUserByEmail($email: String!) {\n    getUserByEmail(email: $email) {\n      email\n      id\n      role\n      username\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation ChangeUserRole($id: ID!, $role: String!) {\n    changeUserRole(ID: $id, role: $role)\n  }\n"): (typeof documents)["\n  mutation ChangeUserRole($id: ID!, $role: String!) {\n    changeUserRole(ID: $id, role: $role)\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
 }
 
-export type DocumentType<TDocumentNode extends DocumentNode<any, any>> =
-  TDocumentNode extends DocumentNode<infer TType, any> ? TType : never;
+export type DocumentType<TDocumentNode extends DocumentNode<any, any>> = TDocumentNode extends DocumentNode<  infer TType,  any>  ? TType  : never;

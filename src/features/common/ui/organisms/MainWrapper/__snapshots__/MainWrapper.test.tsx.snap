@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainWrapper reflect background color by bgcolor props 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: auto;
+  background-color: #1976d2;
+}
+
+<body>
+  <div>
+    <main
+      class="MuiStack-root emotion-0"
+    >
+      <div
+        data-testid="mock-Component"
+      />
+    </main>
+  </div>
+</body>
+`;
+
+exports[`MainWrapper should be rendered as expected 1`] = `
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: auto;
+}
+
+<body>
+  <div>
+    <main
+      class="MuiStack-root emotion-0"
+    >
+      <div
+        data-testid="mock-Component"
+      />
+    </main>
+  </div>
+</body>
+`;

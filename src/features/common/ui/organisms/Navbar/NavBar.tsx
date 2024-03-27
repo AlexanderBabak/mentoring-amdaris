@@ -1,13 +1,13 @@
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { ShoppingBag, Settings } from "@mui/icons-material";
-import { AppBar, Box, Button, Container, IconButton, Stack, Toolbar, Typography } from "@mui/material";
-import useCustomDialog from "../../../hooks/useCustomDialog";
-import useGetUser from "../../../hooks/useGetUser/useGetUser";
-import { useTheme } from "../../../libs/theme";
+import { ShoppingBag, Settings, MonetizationOn, Archive } from "@mui/icons-material";
+import { AppBar, Box, Button, Container, IconButton, Stack, Toolbar, Tooltip, Typography } from "@mui/material";
+import useCustomDialog from "features/common/hooks/useCustomDialog";
+import useGetUser from "features/common/hooks/useGetUser/useGetUser";
+import { useTheme } from "features/common/libs/theme";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const { user, isAdmin, logout } = useGetUser();
+  const { user, isAdmin, logout, featureToggle } = useGetUser();
   const { openDialog, closeDialog } = useCustomDialog();
   const { theme } = useTheme();
 
@@ -36,7 +36,7 @@ const NavBar = () => {
       <Container fixed maxWidth="xl">
         <Toolbar>
           <Typography variant="h1" component="div">
-            <RouterLink to={user ? "/" : "start"} style={{ textDecoration: "none", color: "white" }}>
+            <RouterLink to={user ? "home" : "/"} style={{ textDecoration: "none", color: "white" }}>
               <Stack flexDirection="row" gap={1} alignItems="center">
                 <ShoppingBag />
                 AMDARIS MARKETPLACE
@@ -46,15 +46,33 @@ const NavBar = () => {
           <Box alignItems="right" sx={{ flexGrow: 1, textAlign: "right" }}>
             {user ? (
               <>
+                {featureToggle?.showSales && (
+                  <Tooltip title="Sales">
+                    <IconButton onClick={() => navigate("/sales")}>
+                      <MonetizationOn sx={{ color: theme.palette.primary.contrastText }} fontSize="large" />
+                    </IconButton>
+                  </Tooltip>
+                )}
+
+                {featureToggle?.showOldCollection && (
+                  <Tooltip title="Old Collection">
+                    <IconButton onClick={() => navigate("/old-collection")}>
+                      <Archive sx={{ color: theme.palette.primary.contrastText }} fontSize="large" />
+                    </IconButton>
+                  </Tooltip>
+                )}
+
                 {isAdmin && (
-                  <IconButton
-                    onClick={() => {
-                      navigate("/settings");
-                    }}
-                    sx={{ marginRight: 1 }}
-                  >
-                    <Settings sx={{ color: theme.palette.primary.contrastText }} fontSize="large" />
-                  </IconButton>
+                  <Tooltip title="Settings">
+                    <IconButton
+                      onClick={() => {
+                        navigate("/settings");
+                      }}
+                      sx={{ marginRight: 1 }}
+                    >
+                      <Settings sx={{ color: theme.palette.primary.contrastText }} fontSize="large" />
+                    </IconButton>
+                  </Tooltip>
                 )}
 
                 <Button

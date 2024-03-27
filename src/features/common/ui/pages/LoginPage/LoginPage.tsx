@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import AuthNavigation from "../../molecules/AuthNavigation";
-import AuthWrapper from "../../organisms/AuthWrapper";
-import LoginForm from "../../organisms/LoginForm";
+import AuthNavigation from "features/common/ui/molecules/AuthNavigation";
+import AuthWrapper from "features/common/ui/organisms/AuthWrapper";
+import LoginForm from "features/common/ui/organisms/LoginForm";
 
 const LoginPage = () => {
   return (

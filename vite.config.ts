@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       features: resolve(__dirname, "src/features"),
+      __generated__: resolve(__dirname, "src/__generated__"),
     },
   },
   plugins: [svgr({ svgrOptions: { icon: true } }), react()],

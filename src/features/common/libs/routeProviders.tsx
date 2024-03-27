@@ -1,20 +1,21 @@
 import { Navigate, Outlet } from "react-router-dom";
-import useGetUser from "../hooks/useGetUser";
+import useGetUser from "features/common/hooks/useGetUser";
 
 export const AuthProvider = () => {
+  const token = localStorage.getItem("token");
   const { user } = useGetUser();
 
-  if (user) {
-    return <Navigate to="/" replace />;
+  if (token || user) {
+    return <Navigate to="home" replace />;
   }
   return <Outlet />;
 };
 
 export const PrivateRoutesProvider = () => {
-  const { user } = useGetUser();
+  const token = localStorage.getItem("token");
 
-  if (!user) {
-    return <Navigate to="start" replace />;
+  if (!token) {
+    return <Navigate to="/" replace />;
   }
   return <Outlet />;
 };

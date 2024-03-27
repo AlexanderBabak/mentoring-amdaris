@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Box, Button, CircularProgress, Stack } from "@mui/material";
-import { LoginInput } from "../../../../../__generated__/graphql";
-import useLoginUser from "../../../hooks/useLoginUser";
-import InputStyled from "../../atoms/InputStyled";
+import { LoginInput } from "__generated__/graphql";
+import useLoginUser from "features/common/hooks/useLoginUser";
+import InputStyled from "features/common/ui/atoms/InputStyled";
 
 const LoginForm = () => {
   const [loginUser, { loading }] = useLoginUser();

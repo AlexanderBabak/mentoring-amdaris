@@ -1,4 +1,4 @@
-import { gql } from "../../../../__generated__";
+import { gql } from "__generated__";
 
 export const REGISTER_USER = gql(`
   mutation RegisterUser($registerInput: RegisterInput) {
@@ -42,8 +42,13 @@ export const GET_USER_BY_EMAIL = gql(`
       email
       id
       role
-      token
       username
     }
+  }
+`);
+
+export const CHANGE_USER_ROLE = gql(`
+  mutation ChangeUserRole($id: ID!, $role: String!) {
+    changeUserRole(ID: $id, role: $role)
   }
 `);

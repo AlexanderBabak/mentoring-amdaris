@@ -1,5 +1,5 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
-import { BACKGROUND_GRADIENT, MAIN_TEXT_GRADIENT, TEXT_GRADIENT, useTheme } from "../../../libs/theme";
+import { BACKGROUND_GRADIENT, MAIN_TEXT_GRADIENT, TEXT_GRADIENT, useTheme } from "features/common/libs/theme";
 
 const gradientMainStyle = {
   backgroundImage: MAIN_TEXT_GRADIENT,
